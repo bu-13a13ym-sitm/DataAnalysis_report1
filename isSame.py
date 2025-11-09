@@ -12,9 +12,12 @@ if __name__ == "__main__":
     y_ubvar = y_ubstd ** 2
     s_ubstd = sapporo_pd["ubstd"][0]
     s_ubvar = s_ubstd ** 2
+    print(f"y_ubvar: {y_ubvar}, s_ubvar: {s_ubvar}")
 
     yn = yokohama_pd["n"][0]
     sn = sapporo_pd["n"][0]
+    print(f"yn: {yn}, sn: {sn}")
+
     df1 = yn - 1 if y_ubvar > s_ubvar else sn - 1
     df2 = sn - 1 if y_ubvar > s_ubvar else yn - 1
 

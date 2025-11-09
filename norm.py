@@ -44,6 +44,7 @@ if __name__ == '__main__':
     data = yokohama_pd['予算'].dropna()
     ubstd = np.std(data, ddof=1)
     n = len(data)
+    skew = (n / ((n - 1) * (n - 2))) * np.sum((yokohama_pd['予算'].dropna() / stdev) ** 3)
     se = ubstd / np.sqrt(n)
     ci = stats.t.interval(0.95, df=n-1, loc=mean, scale=se)
     print(f"reliable range: {ci[0]} <= budget <= {ci[1]}\n")
@@ -55,6 +56,7 @@ if __name__ == '__main__':
         "stdev": stdev,
         "coeff": coeff,
         "ubstd": ubstd,
+        "skew": skew,
         "W": w,
         "p": p,
         "n": n
@@ -101,6 +103,7 @@ if __name__ == '__main__':
     data = sapporo_pd['予算'].dropna()
     ubstd = np.std(data, ddof=1)
     n = len(data)
+    skew = (n / ((n - 1) * (n - 2))) * np.sum((sapporo_pd['予算'].dropna() / stdev) ** 3)
     se = ubstd / np.sqrt(n)
     ci = stats.t.interval(0.95, df=n-1, loc=mean, scale=se)
     print(f"reliable range: {ci[0]} <= budget <= {ci[1]}\n")
@@ -112,6 +115,7 @@ if __name__ == '__main__':
         "stdev": stdev,
         "coeff": coeff,
         "ubstd": ubstd,
+        "skew": skew,
         "W": w,
         "p": p,
         "n": n
